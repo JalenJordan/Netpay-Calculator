@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>NET Pay Program</title>
+     </head>
+     <body>
+          <h1>NET Pay Program</h1>
+          <p>Calcuator for a person Net Pay and Gross Pay with the option to deduct additional amount from your check and displays it</p>
+          <!-- FED 15% -->
+          <!-- STATE 5% -->
+          <!-- FICA 7.62% -->
+          <!-- IF ANY ADDITITONAL -->
+          <ol>
+               <li>START</li>
+               <li>Display "Please Input Your Gross Pay"</li>
+               <li>DECLARE grossPay = "30000"</li>
+               <li>DECLARE fedTax="0.15" </li>
+               <li>DECLARE stateTax=".05"</li>
+               <li>DECLARE ficaTax ".0762"</li>
+               <li>PROCESS grossPay * fedTax</li>
+               <li>Display "This is your NET Pay after the Federal deduction</li>
+               <li>Output netPay</li>
+               <li>PROCESS grossPay * stateTax</li>
+               <li>Display "This is your  NET Pay after the State deduction</li>
+               <li>Output netPay</li>
+               <li>PROCESS grossPay * ficaTax</li>
+               <li>Display "This is your NET Pay after the FICA deduction"</li>
+               <li>Output netPay</li>
+               <li>END</li>
+          </ol>
+          <form>
+               How much was your Gross Pay <input type="text" id="grossPay"><br>
+               <input type="button" value="calculate" onclick="calculation ()"><br>
+               do you want to additional taxes  <input type="text" id="additional"><br>
+               <input type="button" value="deducte" onclick="addTax ()">
+          </form>
+          <p id="takeHome"></p>
+     </body>
+     <script>
+          function calculation(){
+               var netPay = document.getElementById('takeHome');
+               var grossPay = parseInt( document.getElementById('grossPay').value);
+               var calculate  = document.getElementById('calculate');
+               var fedTax = grossPay * .15;
+               var stateTax = grossPay  * .05;
+               var ficaTax = grossPay * .0762;
+               var finalCut = grossPay - (fedTax) + (stateTax) + (ficaTax);
+               netPay.innerHTML = "this is what you take home. " + finalCut;
+          }
+          function addTax(){
+               var grossPay = parseInt( document.getElementById('grossPay').value);
+               var netPay = document.getElementById('takeHome')
+               var additional = parseInt(document.getElementById('additional').value);
+               var add = document.getElementById('deducte');
+               var calculate  = document.getElementById('calculate');
+               var fedTax = grossPay * .15;
+               var stateTax = grossPay  * .05;
+               var ficaTax = grossPay * .0762;
+               var finalCut = grossPay - (fedTax) + (stateTax) + (ficaTax) - (additional);
+               netPay.innerHTML = "This is what you take home now " + finalCut;
+          } 
+     </script>
+</html>
